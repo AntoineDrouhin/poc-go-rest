@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -9,18 +10,16 @@ import (
 )
 
 func main() {
-
 	router := mux.NewRouter().StrictSlash(true)
 
 	router.HandleFunc("/", Index)
 	router.HandleFunc("/help", Index)
 
-	router.HandleFunc("/todos", TodoIndex)
-	router.HandleFunc("/todos/{todoId}", TodoShow)
+	router.HandleFunc("/todo", TodoIndex)
+	router.HandleFunc("/todo/{todoId}", TodoShow)
 
 	log.Print("Server running on port 8080")
 	log.Fatal(http.ListenAndServe(":8080", router))
-
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -34,7 +33,12 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func TodoIndex(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Todo Index !")
+	todos := Todos{
+		Todo{Name: "Write presentation"},
+		Todo{Name: "Host meetup"},
+	}
+
+	json.NewEncoder(w).Encode(todos)
 }
 
 func TodoShow(w http.ResponseWriter, r *http.Request) {
