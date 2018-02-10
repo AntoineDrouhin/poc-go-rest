@@ -13,8 +13,8 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		`API usage Guide : 
 			/help
 			/helloWorld
-			/todos
-			/todos/{todoId}
+			/todo
+			/todo/{todoId}
 		`)
 }
 
