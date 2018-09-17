@@ -5,4 +5,4 @@ A basic rest server developped in GO
 
 
 
-First commits follow : [https://thenewstack.io/make-a-restful-json-api-go/](https://thenewstack.io/make-a-restful-json-api-go/)
+First commits follows : [https://thenewstack.io/make-a-restful-json-api-go/](https://thenewstack.io/make-a-restful-json-api-go/)
